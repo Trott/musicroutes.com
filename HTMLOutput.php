@@ -198,7 +198,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		<div class=\"starburst\">
 		<table class=\"pageContainer\">
 		<tr>
-		<td id=\"page\">
+		<td class=\"page\">
 		<div id=\"header\">
 		<div id=\"tagline\">Connect one musician to another<br />
 		through the musicians they've played with</div>
