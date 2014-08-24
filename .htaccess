@@ -1,0 +1,4 @@
+php_flag magic_quotes_gpc Off
+
+AddHandler php5-script .php
+AddType text/css .css

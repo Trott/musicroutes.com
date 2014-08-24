@@ -1,0 +1,508 @@
+/* GENERIC STUFF */
+body {
+	margin: 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+img {
+	border: 0;
+}
+
+form {
+	padding: 0;
+	margin: 0;
+}
+
+select {
+	width: 150px;
+	height: 150px;
+	margin: 1px;
+}
+
+a {
+	text-decoration: none;
+	color: #d84402;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1,h2 {
+	font-family: 'Arial Rounded MT Bold', Verdana, Arial, Helvetica,
+		sans-serif;
+	text-transform: lowercase;
+	color: #798b7a;
+}
+
+h1 {
+	text-align: center;
+	margin: 0;
+	padding: 0 0 15px 0;
+	font-size: 2em;
+}
+
+h2 {
+	margin: 0 0 5px 0;
+	padding: 0;
+	font-size: 1.5em;
+}
+
+/* END GENERIC STUFF */ /* PAGE LAYOUT STUFF */
+#gradient {
+	background: #43a7d3;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a7d3), color-stop(100%,#a9c9c5));
+	background: linear-gradient(to bottom, #43a7d3 0%, #a9c9c5 100%);
+}
+
+#starburst {
+ height:100%;
+ background-image:url(images/starburst.png);
+ background-repeat: no-repeat;
+ background-position: center center;
+ background-attachment: fixed;
+}
+
+#pageContainer {
+	margin-left: auto;
+	margin-right: auto;
+	border-spacing:0;
+	border-collapse:collapse;
+}
+
+#pageContainer td {
+	vertical-align: top;
+	padding:0;
+}
+
+#shadowLeft {
+	width: 6px;
+	height: 800px;
+}
+
+#shadowRight {
+	width: 6px;
+	height: 800px;
+}
+
+#page {
+	background-color: white;
+	width: 900px;
+}
+
+#header {
+	position: relative;
+}
+
+#nameHome {
+	position:relative;
+	left: 120px;
+}
+
+#nameHome img {
+	padding: 4px;
+}
+
+#logoHome {
+	position: absolute;
+	z-index: 2;
+	top: 8px;
+	left: 15px;
+}
+
+#tagline {
+	float: right;
+	width: 300px;
+	color: #8ea18f;
+	text-transform: lowercase;
+	font-size: .7em;
+	line-height: 1.3em;
+	text-align: right;
+	padding: 15px 15px 0 0;
+}
+
+#footer {
+	clear: both;
+	width: 100%;
+	text-align: center;
+	font-size: .7em;
+	line-height: 1.4em;
+	padding: 32px 0 10px 0;
+}
+
+.bottomNote {
+	text-align: center;
+	margin: 0px 0px 30px 0px;
+	font-size: .9em;
+}
+
+/* END PAGE LAYOUT STUFF */ /* NAV BAR STUFF */
+#navBar {
+	background: #43a6d1;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a6d1), color-stop(100%,#0379ab));
+	background: linear-gradient(to bottom, #43a6d1 0%, #0379ab 100%);
+	height: 27px;
+	width: 100%;
+}
+
+#navBar ul {
+	list-style-type: none;
+	padding: 0 0 0 135px;
+	margin: 0;
+	font-size: .9em;
+	float: left;
+	width: 785px;
+}
+
+#navBar li {
+	text-align: center;
+	float: left;
+	text-transform: lowercase;
+}
+
+#navBar li.profile {
+	float: right;
+}
+
+#navBar li a {
+	display: block;
+	color: white;
+	padding: 4px 15px 5px 15px;;
+}
+
+#navBar li a:hover {
+	text-decoration: none;
+	background: #47a8d1;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#47a8d1), color-stop(100%,#abcfca));
+	background: linear-gradient(to bottom, #47a8d1 0%, #abcfca 100%);
+	color: black;
+}
+
+#navBar ul.subNav {
+	position:absolute; 
+	right: 0; 
+	background-color:#5daccf;
+	width: inherit;
+	padding: 0;
+}
+
+#navBar ul.subNav li {
+	float: none;
+}
+
+#navBar ul.subNav li a:hover {
+	background-image: none;
+	background-color: #6fbfdf;
+}
+
+/* END NAV BAR STUFF */ /* CONTENT LAYOUT STUFF */
+#meat {
+	padding: 10px;
+	font-size: .9em;
+	color: #253228;
+}
+
+#content {
+	max-width: 900px;
+	font-size: .9em;
+}
+
+#pleaseWait1,#pleaseWait2 {
+	margin: 6px 50px 6px 50px;
+	padding: 5px;
+	border: dotted 1px #c3d4c5;
+	background-color: #f8f9f8;
+	text-align: center;
+	line-height: 1.4em;
+}
+
+.centered {
+	text-align: center;
+}
+
+.left {
+	text-align: left;
+	display: inline-block;
+}
+
+.left-padded {
+	text-align: left;
+	display: inline-block;
+	margin-left: 135px;
+}
+
+/* END CONTENT LAYOUT STUFF */ /* FORM STUFF */
+textarea {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+input {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+[readonly] { /* Text and background colour, medium red on light yellow */
+color:#798b7a;
+}
+
+.checkboxLabel {
+	text-transform: none;
+	color: #253228;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.standard .submit {
+	text-align: center;
+	padding-top: 10px;
+	color: #000;
+}
+
+.standard {
+	font-family: 'Arial Rounded MT Bold', Verdana, Arial, Helvetica,
+		sans-serif;
+	text-transform: lowercase;
+	color: #798b7a;
+	margin: 25px;
+}
+
+.standard table {
+	text-transform: lowercase;
+	color: #798b7a;
+}
+
+.standard caption {
+	color: black;
+	font-weight: bold;
+	text-align: left;
+	padding-bottom: 10px;
+	text-transform: none;
+}
+
+.standardLabel {
+	padding-top: 5px;
+}
+
+.standardSmall {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: .7em;
+}
+
+.standard .textfield {
+	border: solid 1px #b7c9b8;
+	width: 300px;
+	height: 23px;
+	padding: 2px;
+	margin: 3px;
+}
+
+.standard .textareafield {
+	background-color: white;
+	border: solid 1px #b7c9b8;
+	width: 300px;
+	height: 75px;
+	padding: 2px;
+	margin: 3px;
+}
+
+.standard .hasfocus {
+	border: solid 1px #43a7d3;
+}
+
+.standard .textareahasfocus {
+	background-color: white;
+	border: solid 1px #43a7d3;
+}
+
+.compact {
+	font-family: 'Arial Rounded MT Bold', Verdana, Arial, Helvetica,
+		sans-serif;
+	text-transform: lowercase;
+	color: #798b7a;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.compact .textfield {
+	border: solid 1px #b7c9b8;
+}
+
+.compact .hasfocus {
+	border: solid 1px #43a7d3;
+}
+
+.compact .submit {
+	margin-left: 3px;
+	color: #000;
+	font-size: 14pt;
+}
+
+.selectWidget {
+	text-align: center;
+}
+
+.inputError {
+	color: red;
+	font-weight: bold;
+	text-transform: none;
+}
+
+/* END FORM STUFF */ /* ROUTE STUFF */
+.route {
+	margin: 32px 0 0px 0;
+}
+
+.routeInstance {
+	text-align: center;
+	margin: 8px 0 8px 0;
+}
+
+.artist {
+	font-weight: bold;
+}
+
+.album {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.artistLeft {
+	text-align: left;
+	margin-left: 70px;
+}
+
+.artistRight {
+	text-align: right;
+	margin-right: 70px;
+}
+
+.song {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.songBy {
+	font-size: .8em;
+}
+
+.songInfo {
+	margin: 6px 50px 6px 50px;
+	padding: 5px;
+	border: dotted 1px #c3d4c5;
+	color: #798b7a;
+	background-color: #f8f9f8;
+}
+
+.songInfo a {
+	color: #993001;
+}
+
+.songLinks {
+	margin-top: 4px;
+}
+
+.albumTitle {
+	font-style: italic;
+}
+
+.routeBridgeRight {
+	margin: 0 100px 0 100px;
+	height: 15px;
+	border-right: dashed 2px #a8b8a9;
+	border-bottom: dashed 2px #a8b8a9;
+}
+
+.routeBridgeLeft {
+	margin: 0 100px 0 100px;
+	height: 15px;
+	border-left: dashed 2px #a8b8a9;
+}
+
+/* END ROUTE STUFF */ /* SEARCH RESULT STUFF */
+.individual {
+	display: none;
+	padding: 5px 0 5px 0;
+	margin: 5px 0 0 0;
+	background-color: white;
+	border: dotted 1px #dce5dd;
+}
+
+.individual a {
+	color: #d84402;
+}
+
+.searchMatch {
+	border-left: dashed 2px #a8b8a9;
+	padding-left: 0;
+	margin-left: 15px;
+	margin-top: 0;
+	padding-top: 0;
+	list-style-type: none;
+	color: #a8b8a9;
+}
+
+.searchMatch li {
+	margin-top: 10px;
+	font-size: .9em;
+}
+
+.searchMatch a {
+	padding-left: 15px;
+	border-bottom: dashed 2px #a8b8a9;
+	font-weight: bold;
+	padding-bottom: 4px;
+}
+
+.searchMatch a:hover {
+	text-decoration: none;
+	border-bottom: dashed 2px #d84402;
+}
+
+.noMatch {
+	font-size: .9em;
+	font-style: italic;
+	margin: 3px 0 10px 15px;
+}
+
+/* END SEARCH RESULT STUFF */ /* DISCOGRAPHY STUFF */
+dl {
+	font-family: 'Arial Rounded MT Bold', Verdana, Arial, Helvetica,
+		sans-serif;
+	display: inline-block;
+	text-align: left;
+}
+
+dt {
+	color: #798b7a;
+	font-size: 1.2em;
+	padding-top: 5px;
+}
+
+dd {
+	color: #798b7a;
+}
+
+h2.discographyPageTitle {
+	color: #798b7a;
+	margin: 0 0 15px 0;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+	border-bottom: dashed 2px #a8b8a9;
+	padding-bottom: 5px;
+	text-transform: none;
+}
+
+.smaller {
+	font-size: .6em;
+}
+/* END DISCOGRAPHY STUFF */
+/* BEGIN ADD STUFF */
+.albumList, .trackList {
+	display: none;
+}
+/* END ADD STUFF */
+
+.rpxnow {
+	font-weight: bold;
+}
