@@ -195,7 +195,6 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		$fbImageString
 		</head>
 		<body onload=\"if (foo=document.getElementById('firstTextBox')) foo.focus();\">
-		<div id=\"gradient\">
 		<div id=\"starburst\">
 		<table id=\"pageContainer\">
 		<tr>
@@ -721,7 +720,6 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		<td id="shadowRight"></td>
 		</tr>
 		</table>
-		</div>
 		</div>';
 		?>
 <script type="text/javascript">

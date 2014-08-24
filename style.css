@@ -2,6 +2,7 @@
 body {
 	margin: 0;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background: #43a7d3;
 }
 
 img {
@@ -46,13 +47,6 @@ h2 {
 	margin: 0 0 5px 0;
 	padding: 0;
 	font-size: 1.5em;
-}
-
-/* END GENERIC STUFF */ /* PAGE LAYOUT STUFF */
-#gradient {
-	background: #43a7d3;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#43a7d3), color-stop(100%,#a9c9c5));
-	background: linear-gradient(to bottom, #43a7d3 0%, #a9c9c5 100%);
 }
 
 #starburst {
