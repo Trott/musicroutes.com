@@ -555,50 +555,35 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		echo '</div><div class="bottomNote">'.$content.'</div>';
 	}
 
-	protected static function enableRhapsody() {
-		echo '<script type="text/javascript" src="http://mediaplayer.yahoo.com/js"></script>';
-	}
-
 	protected static function printRouteConnector() {
 		echo '<div class="routeBridgeRight"></div><div class="routeBridgeLeft"></div>';
 	}
 
-	private static function getHtmlArtistFromArray(array $artistArray,$class='',$linkPrefix='') {
+	private static function getHtmlArtistFromArray(array $artistArray,$class='') {
 		$artistPrepend = '';
 		$htmlArtist = '';
 		foreach ($artistArray as $artist) {
-			$htmlArtist .= $artistPrepend . '<a href="'.$linkPrefix.'discography.php?t=a&amp;id='.htmlspecialchars($artist->getID()).'" '.$class.'>'.htmlspecialchars($artist->getToString()).'</a>';
+			$htmlArtist .= $artistPrepend . '<a href="discography.php?t=a&amp;id='.htmlspecialchars($artist->getID()).'" '.$class.'>'.htmlspecialchars($artist->getToString()).'</a>';
 			$artistPrepend = ' &amp; ';
 		}
 		return $htmlArtist;
 	}
 
-	protected static function printRouteSongInfo(RouteElement $re, $yahooPlayerEnabled, $linkPrefix) {
+	protected static function printRouteSongInfo(RouteElement $re) {
 		$track = $re->getTrack();
 		$rcid = $track->getRCID();
 		$artistArray = $re->getArtist(TRUE);
-		$rhapsodyLinkText = $yahooPlayerEnabled ? '' : '<img src="http://www.musicroutes.com/images/ButtonListen.gif" alt="Listen" />';
 		$album = $re->getAlbum();
-		if ( strlen($rcid)) {
-			if ($yahooPlayerEnabled) {
-				//The two &nbsp entities are browser hacks for Safari, Chrome, and IE to make the play-this-song image show up centered, etc.
-				$listenLink='&nbsp;<a href="http://www.qksrv.net/click-PID-3053040?url=http://play.rhapsody.com/goto?rcid=' . htmlspecialchars($rcid) . '?pcode=cj&amp;cpath=aff">'.$rhapsodyLinkText.'</a>&nbsp;';
-			} else {
-				$listenLink='&nbsp;<a href="http://play.rhapsody.com/goto?rcid='.htmlspecialchars($rcid).'" target="_blank">'.$rhapsodyLinkText.'</a>&nbsp;';
-			}
-		} else {
-			$listenLink='';
-		}
 
-		$htmlArtist = self::getHtmlArtistFromArray($artistArray,'',$linkPrefix);
+		$htmlArtist = self::getHtmlArtistFromArray($artistArray);
 
-		echo '<div class="songInfo"><div class="song">&ldquo;<a href="'.$linkPrefix.'discography.php?id='.htmlspecialchars($track->getID()).'">'.htmlspecialchars($track->getToString()).'</a>&rdquo;</div>';
+		echo '<div class="songInfo"><div class="song">&ldquo;<a href="discography.php?id='.htmlspecialchars($track->getID()).'">'.htmlspecialchars($track->getToString()).'</a>&rdquo;</div>';
 		echo '<div class="songBy">by '.$htmlArtist;
-		echo ' from the album <a href="'.$linkPrefix.'discography.php?t=l&amp;id='.htmlspecialchars($album->getID()).'" class="albumTitle">'.htmlspecialchars($album->getToString()).'</a></div>';
-		echo '<div class="songLinks">'.$listenLink.'</div></div>';
+		echo ' from the album <a href="discography.php?t=l&amp;id='.htmlspecialchars($album->getID()).'" class="albumTitle">'.htmlspecialchars($album->getToString()).'</a></div>';
+		echo '</div>';
 	}
 
-	protected static function printRouteArtistLeft(RouteElement $re, $linkPrefix) {
+	protected static function printRouteArtistLeft(RouteElement $re) {
 		echo '<div class="artistLeft">';
 		switch ($re->getFromType()) {
 			case 'artist':
@@ -606,18 +591,18 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 				echo "$htmlArtist performed";
 				break;
 			case 'album':
-				echo '<a href="'.$linkPrefix.'discography.php?t=l&amp;id='.htmlspecialchars($re->getAlbum()->getID()).'" class="album">'.htmlspecialchars($re->getAlbum()->getToString()).'</a> contains';
+				echo '<a href="discography.php?t=l&amp;id='.htmlspecialchars($re->getAlbum()->getID()).'" class="album">'.htmlspecialchars($re->getAlbum()->getToString()).'</a> contains';
 				break;
 			case 'track':
 				break;
 			default:
 				list($individual) = $re->getFrom();
-				echo '<a href="'.$linkPrefix.'discography.php?t=i&amp;id='.htmlspecialchars($individual->getID()).'" class="artist">'.htmlspecialchars($individual->getToString()).'</a> performed on';
+				echo '<a href="discography.php?t=i&amp;id='.htmlspecialchars($individual->getID()).'" class="artist">'.htmlspecialchars($individual->getToString()).'</a> performed on';
 		}
 		echo '</div>';
 	}
 
-	protected static function printRouteArtistRight(RouteElement $re, $linkPrefix) {
+	protected static function printRouteArtistRight(RouteElement $re) {
 		echo '<div class="artistRight">';
 		switch ($re->getToType()) {
 			case 'artist':
@@ -625,13 +610,13 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 				echo "by $htmlArtist";
 				break;
 			case 'album':
-				echo 'on <a href="'.$linkPrefix.'discography.php?t=l&amp;id='.htmlspecialchars($re->getAlbum()->getID()).'" class="album">'.htmlspecialchars($re->getAlbum()->getToString()).'</a>';
+				echo 'on <a href="discography.php?t=l&amp;id='.htmlspecialchars($re->getAlbum()->getID()).'" class="album">'.htmlspecialchars($re->getAlbum()->getToString()).'</a>';
 				break;
 			case 'track':
 				break;
 			default:
 				list($to) = $re->getTo();
-				echo 'with <a href="'.$linkPrefix.'discography.php?t=i&amp;id='.htmlspecialchars($to->getID()).'" class="artist">'.htmlspecialchars($to->getToString()).'</a>';
+				echo 'with <a href="discography.php?t=i&amp;id='.htmlspecialchars($to->getID()).'" class="artist">'.htmlspecialchars($to->getToString()).'</a>';
 		}
 		echo '</div>';
 	}
@@ -644,15 +629,11 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		echo '</div>';
 	}
 
-	public static function printRoute(RouteObject $ro, $yahooPlayerEnabled=TRUE, $fqdnLinks=FALSE) {
-		$linkPrefix = $fqdnLinks ? 'http://musicroutes.com/' : '';
+	public static function printRoute(RouteObject $ro) {
 		$ro->rewind();
 		$first=TRUE;
 		foreach ($ro as $key=>$routeNode) {
 			if ( $first ) {
-				if ($yahooPlayerEnabled) {
-					self::enableRhapsody();
-				}
 				echo "<div class=\"route\">\n";
 				self::printRouteLength($ro->getCount() - 1);
 				$first=FALSE;
@@ -660,9 +641,9 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 				self::printRouteConnector();
 			}
 			self::printRouteInstanceStart();
-			self::printRouteArtistLeft($routeNode,$linkPrefix);
-			self::printRouteSongInfo($routeNode,$yahooPlayerEnabled,$linkPrefix);
-			self::printRouteArtistRight($routeNode,$linkPrefix);
+			self::printRouteArtistLeft($routeNode);
+			self::printRouteSongInfo($routeNode);
+			self::printRouteArtistRight($routeNode);
 			self::printRouteInstanceEnd();
 		}
 		if (!$first) {
