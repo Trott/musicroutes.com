@@ -62,21 +62,12 @@ h2 {
 	margin-right: auto;
 	border-spacing:0;
 	border-collapse:collapse;
+	min-height: 800px;
 }
 
 .pageContainer td {
 	vertical-align: top;
 	padding:0;
-}
-
-#shadowLeft {
-	width: 6px;
-	height: 800px;
-}
-
-#shadowRight {
-	width: 6px;
-	height: 800px;
 }
 
 #page {

@@ -198,7 +198,6 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		<div class=\"starburst\">
 		<table class=\"pageContainer\">
 		<tr>
-		<td id=\"shadowLeft\"></td>
 		<td id=\"page\">
 		<div id=\"header\">
 		<div id=\"tagline\">Connect one musician to another<br />
@@ -698,7 +697,6 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		target="_blank" href="http://www.humuhumu.com/">Humuhumu</a></small></div>
 
 		</td>
-		<td id="shadowRight"></td>
 		</tr>
 		</table>
 		</div>';
