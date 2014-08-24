@@ -57,14 +57,14 @@ h2 {
  background-attachment: fixed;
 }
 
-#pageContainer {
+.pageContainer {
 	margin-left: auto;
 	margin-right: auto;
 	border-spacing:0;
 	border-collapse:collapse;
 }
 
-#pageContainer td {
+.pageContainer td {
 	vertical-align: top;
 	padding:0;
 }
