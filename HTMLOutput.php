@@ -195,7 +195,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		$fbImageString
 		</head>
 		<body onload=\"if (foo=document.getElementById('firstTextBox')) foo.focus();\">
-		<div id=\"starburst\">
+		<div class=\"starburst\">
 		<table id=\"pageContainer\">
 		<tr>
 		<td id=\"shadowLeft\"></td>
