@@ -199,7 +199,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		<table class=\"pageContainer\">
 		<tr>
 		<td class=\"page\">
-		<div id=\"header\">
+		<div class=\"header\">
 		<div id=\"tagline\">Connect one musician to another<br />
 		through the musicians they've played with</div>
 				<a href=\"/\" id=\"logoHome\"><img src=\"images/webLogo.png\" alt=\"Music Routes Logo\" /></a>
