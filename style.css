@@ -78,13 +78,14 @@ h2 {
 	position: relative;
 }
 
-#nameHome {
+.nameHome {
 	position:relative;
 	left: 120px;
 }
 
-#nameHome img {
+.nameHome img {
 	padding: 4px;
+	margin: 5px 0 5px 20px;
 }
 
 .logoHome {
