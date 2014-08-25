@@ -202,7 +202,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		<div class=\"header\">
 		<div class=\"tagline\">Connect one musician to another<br />
 		through the musicians they've played with</div>
-				<a href=\"/\" id=\"logoHome\"><img src=\"images/webLogo.png\" alt=\"Music Routes Logo\" /></a>
+				<a href=\"/\" class=\"logoHome\"><img src=\"images/webLogo.png\" alt=\"Music Routes Logo\" /></a>
 				<a href=\"/\" id=\"nameHome\"><img src=\"images/music_routes.png\" alt=\"Music Routes\"
 				style=\"margin: 5px 0 5px 20px;\" /></a>
 				<div id=\"navBar\">
