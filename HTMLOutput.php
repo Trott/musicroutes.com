@@ -209,36 +209,12 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 				<li><a href=\"route.php\">Find a Route</a></li>
 				<li><a href=\"search.php\">Search</a></li>
 				<li><a href=\"add.php\">Add Info</a></li>
-				<li><a href=\"http://blog.musicroutes.com/\">Blog</a></li>";
-		$a = new Authenticator();
-		if ($a->isLoggedIn()) {
-			echo '<li class="profile"><a href="/profile.php">&#x25BE; ' . $a->getName() . '</a><ul class="subNav"><li><a href="/profile.php">Profile</a></li><li><a href="/logout.php">Logout</a></li></ul>';
-			HTMLOutput::loadJQuery();
-			echo '<script type="text/javascript">$(document).ready(function() {
-  var toggle = function(direction, display) {
-    return function() {    
-    var self = this;
-      var ul = $("ul", this);
-      if( ul.css("display") == display && !self["block" + direction] ) {
-        self["block" + direction] = true;
-        ul["slide" + direction]("fast", function() {
-          self["block" + direction] = false;
-        });
-      }
-    };
-  }
-  $("li.profile").hover(toggle("Down", "none"), toggle("Up", "block"));
-  $("li.profile ul").hide();
-});</script></li>';		
-		} else {
-			HTMLOutput::printSignIn();
-		}
-		echo "	</ul>
+				<li><a href=\"http://blog.musicroutes.com/\">Blog</a></li>
+				</ul>
 				</div>
 				</div>
 
 				<div id=\"meat\">
-				<div id=\"subNav\">&nbsp;</div>
 				<div id=\"content\"><h1>$myHeaderString</h1>";
 	}
 

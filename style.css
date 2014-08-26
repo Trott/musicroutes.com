@@ -144,10 +144,6 @@ h2 {
 	text-transform: lowercase;
 }
 
-#navBar li.profile {
-	float: right;
-}
-
 #navBar li a {
 	display: block;
 	color: white;
@@ -162,25 +158,9 @@ h2 {
 	color: black;
 }
 
-#navBar ul.subNav {
-	position:absolute; 
-	right: 0; 
-	background-color:#5daccf;
-	width: inherit;
-	padding: 0;
-}
-
-#navBar ul.subNav li {
-	float: none;
-}
-
-#navBar ul.subNav li a:hover {
-	background-image: none;
-	background-color: #6fbfdf;
-}
-
 /* END NAV BAR STUFF */ /* CONTENT LAYOUT STUFF */
 #meat {
+	margin-top: 24px;
 	padding: 10px;
 	font-size: .9em;
 	color: #253228;
