@@ -50,11 +50,11 @@ h2 {
 }
 
 .starburst {
- height:100%;
- background-image:url(images/starburst.png);
- background-repeat: no-repeat;
- background-position: center center;
- background-attachment: fixed;
+	height:100%;
+	background-image:url(images/starburst.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
 }
 
 .pageContainer {
