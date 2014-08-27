@@ -124,7 +124,7 @@ h2 {
 #navBar {
 	background: #0379ab;
 	height: 27px;
-	width: 100%;
+	width: 920px;
 }
 
 #navBar ul {
@@ -133,7 +133,6 @@ h2 {
 	margin: 0;
 	font-size: .9em;
 	float: left;
-	width: 785px;
 }
 
 #navBar li {
