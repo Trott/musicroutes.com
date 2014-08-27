@@ -161,7 +161,7 @@ h2 {
 	color: #253228;
 }
 
-#content {
+.content {
 	max-width: 900px;
 	font-size: .9em;
 }
