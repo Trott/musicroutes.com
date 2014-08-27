@@ -154,7 +154,7 @@ h2 {
 }
 
 /* END NAV BAR STUFF */ /* CONTENT LAYOUT STUFF */
-#meat {
+.meat {
 	margin-top: 24px;
 	padding: 10px;
 	font-size: .9em;

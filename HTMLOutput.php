@@ -214,7 +214,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 				</div>
 				</div>
 
-				<div id=\"meat\">
+				<div class=\"meat\">
 				<div id=\"content\"><h1>$myHeaderString</h1>";
 	}
 
