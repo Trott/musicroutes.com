@@ -121,13 +121,13 @@ h2 {
 }
 
 /* END PAGE LAYOUT STUFF */ /* NAV BAR STUFF */
-#navBar {
+.navBar {
 	background: #0379ab;
 	height: 27px;
 	width: 920px;
 }
 
-#navBar ul {
+.navBar ul {
 	list-style-type: none;
 	padding: 0 0 0 135px;
 	margin: 0;
@@ -135,19 +135,19 @@ h2 {
 	float: left;
 }
 
-#navBar li {
+.navBar li {
 	text-align: center;
 	float: left;
 	text-transform: lowercase;
 }
 
-#navBar li a {
+.navBar li a {
 	display: block;
 	color: white;
 	padding: 4px 15px 5px 15px;;
 }
 
-#navBar li a:hover {
+.navBar li a:hover {
 	text-decoration: none;
 	background: #47a8d1;
 	color: black;

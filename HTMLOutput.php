@@ -204,7 +204,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		through the musicians they've played with</div>
 				<a href=\"/\" class=\"logoHome\"><img src=\"images/webLogo.png\" alt=\"Music Routes Logo\" /></a>
 				<a href=\"/\" class=\"nameHome\"><img src=\"images/music_routes.png\" alt=\"Music Routes\" /></a>
-				<div id=\"navBar\">
+				<div class=\"navBar\">
 				<ul>
 				<li><a href=\"route.php\">Find a Route</a></li>
 				<li><a href=\"search.php\">Search</a></li>
