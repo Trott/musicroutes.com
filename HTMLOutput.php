@@ -266,7 +266,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		echo "</form>\n";
 		if ( $pleaseWait ) {
 			$urlStart = $facebook ? 'http://musicroutes.com/' : '';
-			echo '<div id="pleaseWait'.self::$pleaseWaitId.'" style="display: none;">Finding route...<br/><progress></progress></div>';
+			echo '<div id="pleaseWait'.self::$pleaseWaitId.'" class="pleaseWait">Finding route...<br/><progress></progress></div>';
 		}
 	}
 

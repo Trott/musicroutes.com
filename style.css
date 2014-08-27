@@ -166,13 +166,14 @@ h2 {
 	font-size: .9em;
 }
 
-#pleaseWait1,#pleaseWait2 {
+.pleaseWait {
 	margin: 6px 50px 6px 50px;
 	padding: 5px;
 	border: dotted 1px #c3d4c5;
 	background-color: #f8f9f8;
 	text-align: center;
 	line-height: 1.4em;
+	display: none;
 }
 
 .centered {
