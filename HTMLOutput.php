@@ -190,6 +190,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		echo "<!DOCTYPE html><html lang=\"en\"><head><title>$myTitleString</title>";
 		self::printStyleSheet();
 		echo "<meta charset=\"utf-8\" />
+		<meta name=viewport content=\"width=device-width, initial-scale=1\">
 		$fbTitleString
 		$fbDescriptionString
 		$fbImageString
