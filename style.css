@@ -81,9 +81,8 @@ h2 {
 }
 
 .logoHome {
-	position: absolute;
-	top: 8px;
-	left: 15px;
+	float: left;
+	margin: 8px 0 0 15px;
 }
 
 .tagline {
