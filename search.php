@@ -125,11 +125,9 @@ if ($termsSubmitted) {
 		$ho->printSearchMatches('track',$myData);
 	}
 	echo "</div></div>";
-	?>
-<div class="bottomNote">Help us complete and correct our data: <a
-	href="add.php">add info to Music Routes</a>.</div>
 
-	<?php
+	$ho->printAddInfoForm();
+	
 	$messageToTrott = <<<TROTT
 	Q: {$terms}
 	I: $numIresults

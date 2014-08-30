@@ -218,14 +218,6 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 				<div class=\"content\"><h1>$myHeaderString</h1>";
 	}
 
-	public static function printSignIn($compact=true) {
-		if ($compact) {
-			echo "<li class=\"profile\"><a class=\"rpxnow\" onclick=\"return false;\" href=\"https://music-routes.rpxnow.com/openid/v2/signin?token_url=http%3A%2F%2Fmusicroutes.com%2Frpx.php?redir=".urlencode($_SERVER['PHP_SELF'])."\">Sign In</a></li>";
-		} else {
-			echo '<div class="centered">You must <a class="rpxnow" onclick="return false;" href="https://music-routes.rpxnow.com/openid/v2/signin?token_url=http%3A%2F%2Fmusicroutes.com%2Frpx.php?redir='.urlencode($_SERVER['PHP_SELF']).'">sign in</a> to use this feature.</div>';
-		}
-	}
-
 	public static function loadJQuery() {
 		if (self::$jQueryLoaded)
 		return;
@@ -418,61 +410,8 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 	}
 
 	public static function printAddInfoForm($caption='',$newArtist='',$absolute=FALSE, array $artists=array(), $album='', array $albums=array()) {
-		$a = new Authenticator();
-		if (! $a->isLoggedIn() ) {
-			if (! self::$addInfoSignInPromptPrinted) {
-				$print_caption = $caption == '' ? '' : htmlspecialchars($caption . ' ');
-				echo '<p class="centered">' . $print_caption;
-				echo  $myCaption . '<a class="rpxnow" onclick="return false;" href="https://music-routes.rpxnow.com/openid/v2/signin?token_url=http%3A%2F%2Fmusicroutes.com%2Frpx.php?redir=/add.php">Sign in</a> to contribute data!</p>';
-				self::$addInfoSignInPromptPrinted = true;
-			}
-			return;
-		}
-		echo '<div class="centered"><div class="left">';
-		$action = $absolute ? 'http://musicroutes.com/add.php' : 'add.php';
-		self::printFormStart($caption,'',$action);
-		$individuals=array();
-		if (! empty($artists)) {
-			//self::printInputCheckboxSet('existingArtist','Band(s)', $artists);
-			self::printInputText('artist', 'Band/Artist', $artists[0]->getToString(), FALSE, TRUE);
-			self::printInputHidden('artist_id',$artists[0]->getId());
-			$individuals=$artists[0]->getRelated('individual');
-		} else {
-			self::printInputText('artist', 'Band/Artist', $newArtist, TRUE, FALSE);
-		}
-		if (! empty($individuals)) {
-			self::printInputCheckboxSet('individual_id','Musicians',$individuals);
-			self::printInputTextarea('personnel','Additional Musicians','',TRUE);
-
-		} else {
-			self::printInputTextarea('personnel','Musicians','',TRUE);
-		}
-
-		//TODO:  Checkbox for existing bands, with input text if we get it wrong or if there's another band involved
-		//FIXME: Checkboxes for members of the band, band itself, album, maybe track too (aliases, typos, etc.?)
-
-		//TODO: Checkboxes for collaborators?
-		//TODO: Instruments
-		//TODO: Google Suggest type stuff
-
-		if (! empty($albums)) {
-			self::printInputText('album','Album',$albums[0]->getToString(),FALSE,TRUE);
-			self::printInputHidden('album_id',$albums[0]->getId());
-		} else {
-			self::printInputText('album','Album',$album,TRUE);
-		}
-		$track = array_key_exists('t', $_GET) ? $_GET['t'] : '';
-		if (! empty($track)) {
-			self::printInputText('title','Song Title',$track,FALSE,TRUE);
-		} else {
-			//TODO: Better way (than pipe delimiters) for entering multiple tracks?
-			self::printInputText('title','Song Title',$track,TRUE);
-		}
-		//self::printInputTextarea('notes','Additional Notes');
-		//self::printInputText('email','Your Email (optional)');
-		self::printSubmitButton('Send Info','ButtonSendInfo.gif',FALSE,FALSE,$absolute);
-		self::printFormEnd();
-		echo '</div></div>';
+		echo "<p class=\"centered\">$caption</p>";
+		echo "<p class=\"centered\">Email additions, corrections, etc. to <a href=\"mailto:rtrott@gmail.com\">rtrott@gmail.com</a></p>";
 	}
 
 	public static function printSearchForm($terms='',$error='') {
@@ -682,15 +621,6 @@ try {
 var pageTracker = _gat._getTracker("UA-7422407-1");
 pageTracker._trackPageview();
 } catch(err) {}
-</script>
-<script type="text/javascript">
-  var rpxJsHost = (("https:" == document.location.protocol) ? "https://" : "http://static.");
-  document.write(unescape("%3Cscript src='" + rpxJsHost +
-"rpxnow.com/js/lib/rpx.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-  RPXNOW.overlay = true;
-  RPXNOW.language_preference = 'en';
 </script>
 		<?php
 		echo '</body>
