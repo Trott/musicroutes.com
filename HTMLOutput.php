@@ -196,7 +196,6 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		$fbImageString
 		</head>
 		<body onload=\"if (foo=document.getElementById('firstTextBox')) foo.focus();\">
-		<div class=\"starburst\">
 		<table class=\"pageContainer\">
 		<tr>
 		<td class=\"page\">
@@ -674,8 +673,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 
 		</td>
 		</tr>
-		</table>
-		</div>';
+		</table>';
 		?>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

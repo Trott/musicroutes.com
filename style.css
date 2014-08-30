@@ -49,14 +49,6 @@ h2 {
 	font-size: 1.5em;
 }
 
-.starburst {
-	height:100%;
-	background-image:url(images/starburst.png);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-attachment: fixed;
-}
-
 .pageContainer {
 	margin-left: auto;
 	margin-right: auto;
@@ -78,20 +70,14 @@ h2 {
 	position: relative;
 }
 
-.nameHome {
-	position:relative;
-	left: 120px;
-}
-
 .nameHome img {
 	padding: 4px;
 	margin: 5px 0 5px 20px;
 }
 
 .logoHome {
-	position: absolute;
-	top: 8px;
-	left: 15px;
+	float: left;
+	margin: 8px 0 0 15px;
 }
 
 .tagline {
@@ -124,7 +110,6 @@ h2 {
 .navBar {
 	background: #0379ab;
 	height: 27px;
-	width: 920px;
 }
 
 .navBar ul {
