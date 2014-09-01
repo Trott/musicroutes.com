@@ -607,8 +607,8 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 
 		<div class="footer"><a href="about.php">About</a> - <a href="tos.php">Terms
 		of Service</a> - <a href="contact.php">Contact Us</a><br />
-		<small>&copy; 2008-2011 Rich Trott<br/>Site design by <a
-		target="_blank" href="http://www.humuhumu.com/">Humuhumu</a></small></div>
+		<small>Site design by <a target="_blank" href="http://www.humuhumu.com/">Humuhumu</a></small>
+		</div>
 
 		</td>
 		</tr>
