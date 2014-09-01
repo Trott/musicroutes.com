@@ -227,7 +227,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 
 	public static function printStyleSheet($absolute=FALSE) {
 		$prefix = $absolute ? 'http://musicroutes.com/' : '';
-		echo '<link rel="stylesheet" href="'. $prefix . 'style.css?v=1.1.1" type="text/css" />';
+		echo '<link rel="stylesheet" href="'. $prefix . 'style.min.css" type="text/css" />';
 	}
 
 	public static function printFormStart($captionText='',$errorMessage='', $action='', $compact=FALSE, $get=FALSE ) {
