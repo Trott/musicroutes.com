@@ -594,7 +594,7 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 
 	public static function printSampleRoute($start,$end,$target='route.php') {
 		?>
-<div>Try: <a href="<?php echo $target ?>?musicianName=<?php echo htmlspecialchars(urlencode($start)) ?>&amp;musicianName2=<?php echo htmlspecialchars(urlencode($end)) ?>"><?php echo htmlspecialchars($start) ?>&nbsp;to&nbsp;<?php echo htmlspecialchars($end) ?></a></div>
+<div class="sample">Try: <a href="<?php echo $target ?>?musicianName=<?php echo htmlspecialchars(urlencode($start)) ?>&amp;musicianName2=<?php echo htmlspecialchars(urlencode($end)) ?>"><?php echo htmlspecialchars($start) ?>&nbsp;to&nbsp;<?php echo htmlspecialchars($end) ?></a></div>
 		<?php
 	}
 

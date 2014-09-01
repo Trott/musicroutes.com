@@ -442,4 +442,8 @@ h2.discographyPageTitle {
 .albumList, .trackList {
 	display: none;
 }
+
+.sample {
+	margin-top:1em;
+}
 /* END ADD STUFF */
