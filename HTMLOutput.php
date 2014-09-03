@@ -428,17 +428,6 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		self::printSubmitButton('Route', NULL, TRUE, TRUE, $absolute);
 		self::printFormEnd(TRUE,TRUE,$absolute);
 	}
-	
-	public static function printProfile( $authenticator ) {
-		$um = new UserModel();
-		$userProperties = $um->getUser($authenticator->getIdentifier());
-		echo '<div class="centered"><div class="left">';
-		echo '<h2>'.$authenticator->getName().'</h2>';
-		echo '<p>You have <strong>'.$userProperties['points'].'</strong> points.</p>';
-		echo '<p>You have <strong>0</strong> badges.</p>';
-		echo '<p><a href="/add.php">Add information about recordings</a> to earn points and badges!</p>';
-		echo '</div></div>';
-	}
 
 	public static function printBottomNote($content='') {
 		if (empty($content)) {
