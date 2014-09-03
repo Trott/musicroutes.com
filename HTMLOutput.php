@@ -196,9 +196,8 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		$fbImageString
 		</head>
 		<body onload=\"if (foo=document.getElementById('firstTextBox')) foo.focus();\">
-		<table class=\"pageContainer\">
-		<tr>
-		<td class=\"page\">
+		<div class=\"pageContainer\">
+		<div class=\"page\">
 		<div class=\"header\">
 		<div class=\"tagline\">Connect one musician to another<br />
 		through the musicians they've played with</div>
@@ -600,9 +599,8 @@ MusicRoutes by <a href="contact.php">using our contact form</a>.</p>';
 		  <div class="design">Site design by <a target="_blank" href="http://www.humuhumu.com/">Humuhumu</a></div>
 		</div>
 
-		</td>
-		</tr>
-		</table>';
+		</div>
+		</div>';
 		?>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

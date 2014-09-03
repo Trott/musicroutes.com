@@ -46,20 +46,19 @@ h2 {
 }
 
 .pageContainer {
-	margin-left: auto;
-	margin-right: auto;
 	border-spacing:0;
 	border-collapse:collapse;
-	min-height: 800px;
-}
-
-.pageContainer td {
 	vertical-align: top;
 	padding:0;
 }
 
 .page {
 	background-color: white;
+	min-height: 800px;
+	max-width: 900px;
+	font-size: .9em;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .nameHome img {
@@ -134,11 +133,6 @@ h2 {
 	padding: 10px;
 	font-size: .9em;
 	color: #253228;
-}
-
-.content {
-	max-width: 900px;
-	font-size: .9em;
 }
 
 .pleaseWait {
