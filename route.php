@@ -120,7 +120,7 @@ foreach ($sampleRoutes as $myRoute) {
     </div>
 
     <div class="footer">
-      <div><a href="about.php">About</a> - <a href="tos.php">Terms
+      <div><a href="tos.php">Terms
         of Service</a> - <a href="contact.php">Contact Us</a></div>
         <div class="design">Site design by <a target="_blank" href="http://www.humuhumu.com/">Humuhumu</a></div>
       </div>
