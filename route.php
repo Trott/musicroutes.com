@@ -4,7 +4,6 @@ require_once( 'HTMLOutput.php' );
 require_once( 'HTTPRequest.php' );
 require_once( 'DataInterface.php' );
 require_once( 'RouteObject.php' );
-require_once( 'RouteSaver.php' );
 
 $hr = new HTTPRequest;
 $di = DataInterface::singleton();
@@ -16,96 +15,59 @@ $navigation = array();
 
 $endPoints = array($hr->getValue('musicianName'), $hr->getValue('musicianName2'));
 
-$savedRoute = $hr->getValue('route');
-
 $error='';
 $findPath = false;
 
-$typeToReport = array('saved route', 'saved route');
-
 $finalTitle='';
-if ( empty($savedRoute) ) {
-	if (empty($endPoints[0]) && ( empty($endPoints[1]) )) {
-		$error = 'Enter a musician, band, album, or song!';
-		$allArtists = $di->getAll('artist',array('tostring'));
-		$randStartArtists = array_rand($allArtists,5);
-		$randEndArtists = array_rand($allArtists,5);
-		for ($i=0; $i<5; $i++)
-			$sampleRoutes[] = array('start'=>$allArtists[$randStartArtists[$i]]['tostring'], 
-				'end'=>$allArtists[$randEndArtists[$i]]['tostring']
-			);
-	} elseif (empty($endPoints[0]) xor empty($endPoints[1])) {
-		$startPoint = ! empty($endPoints[0]) ? $endPoints[0] : $endPoints[1];
-		$allArtists = $di->getAll('artist',array('tostring'));
-		$randArtists = array_rand($allArtists,5);
-		foreach ($randArtists as $randArtist)
-			$sampleRoutes[] = array('start'=>$startPoint, 'end'=>$allArtists[$randArtist]['tostring']);
-	} else {
-		$findPath = true;
 
-		$nodes = array(null,null);
-		$searchType = array(null,null);
-		for ($i=0; $i<2; $i++){
-			list($nodes[$i],$searchType[$i],$resultCount) = $di->search($endPoints[$i], TRUE, array('individual','artist','track','album'));
-			$typeToReport[$i] = $searchType[$i] . ' entire field';
-			if (empty($nodes[$i])) {
-				list($nodes[$i],$searchType[$i],$resultCount) = $di->search($endPoints[$i], TRUE, array('individual','artist','track','album'), TRUE);
-				$typeToReport[$i] = $searchType[$i] . ' match on wordbreaks';
-			}
-			if (empty($nodes[$i])) {
-				$nodes[$i] = $di->searchAcrossFields($endPoints[$i]);
-				$searchType[$i] = 'track';
-				$typeToReport[$i] = 'multifield';
-			}
-			if (empty($nodes[$i])) {
-				$fuzzyResults = $di->searchFuzzy($endPoints[$i]);
-				foreach ($fuzzyResults as $key=>$value) {
-					if (!empty($value)) {
-						$searchType[$i]=$key;
-						$nodes[$i]=$value;
-						$typeToReport[$i] = 'fuzzy';
-						break;
-					}
+if (empty($endPoints[0]) && ( empty($endPoints[1]) )) {
+	$error = 'Enter a musician, band, album, or song!';
+	$allArtists = $di->getAll('artist',array('tostring'));
+	$randStartArtists = array_rand($allArtists,5);
+	$randEndArtists = array_rand($allArtists,5);
+	for ($i=0; $i<5; $i++)
+		$sampleRoutes[] = array('start'=>$allArtists[$randStartArtists[$i]]['tostring'], 
+			'end'=>$allArtists[$randEndArtists[$i]]['tostring']
+		);
+} elseif (empty($endPoints[0]) xor empty($endPoints[1])) {
+	$startPoint = ! empty($endPoints[0]) ? $endPoints[0] : $endPoints[1];
+	$allArtists = $di->getAll('artist',array('tostring'));
+	$randArtists = array_rand($allArtists,5);
+	foreach ($randArtists as $randArtist)
+		$sampleRoutes[] = array('start'=>$startPoint, 'end'=>$allArtists[$randArtist]['tostring']);
+} else {
+	$findPath = true;
+
+	$nodes = array(null,null);
+	$searchType = array(null,null);
+	for ($i=0; $i<2; $i++){
+		list($nodes[$i],$searchType[$i],$resultCount) = $di->search($endPoints[$i], TRUE, array('individual','artist','track','album'));
+		if (empty($nodes[$i])) {
+			list($nodes[$i],$searchType[$i],$resultCount) = $di->search($endPoints[$i], TRUE, array('individual','artist','track','album'), TRUE);
+		}
+		if (empty($nodes[$i])) {
+			$nodes[$i] = $di->searchAcrossFields($endPoints[$i]);
+			$searchType[$i] = 'track';
+		}
+		if (empty($nodes[$i])) {
+			$fuzzyResults = $di->searchFuzzy($endPoints[$i]);
+			foreach ($fuzzyResults as $key=>$value) {
+				if (!empty($value)) {
+					$searchType[$i]=$key;
+					$nodes[$i]=$value;
+					break;
 				}
 			}
 		}
-
-		if (empty($nodes[0]) || empty($nodes[1])) {
-			error_log("No route found between {$endPoints[0]} and {$endPoints[1]}\r\n{$_SERVER['HTTP_USER_AGENT']}\r\n{$_SERVER['REMOTE_ADDR']}\r\n", $reporting_method, $reportee);
-		} else {
-			$ro = new RouteObject($nodes[0],$nodes[1],$searchType[0],$searchType[1]);
-		}
 	}
-} else {
-	$rs = new RouteSaver;
-	$ro = $rs->retrieveRoute($savedRoute);
-	if ($ro) {
-		$ro->rewind();
-		$rhStart=$ro->current();
-		$fromType = $rhStart->getFromType();
 
-		$ro->last();
-		$rhEnd = $ro->current();
-		$toType = $rhEnd->getToType();
-
-		if ($fromType != 'track') {
-			$element = $rhStart->getFrom();
-			$endPoints[0] = implode(' ',$element);
-		} else {
-			$endPoints[0] = getTextDump($rhStart);
-		}
-
-		if ($toType != 'track') {
-			$element = $rhEnd->getTo();
-			$endPoints[1] = implode(' ',$element);
-		} else {
-			$endPoints[1] = getTextDump($rhEnd);
-		}
+	if (empty($nodes[0]) || empty($nodes[1])) {
+		error_log("No route found between {$endPoints[0]} and {$endPoints[1]}\r\n{$_SERVER['HTTP_USER_AGENT']}\r\n{$_SERVER['REMOTE_ADDR']}\r\n", $reporting_method, $reportee);
 	} else {
-		$error="The route specified is not valid or has expired.  Please check the URL and try again.";
-		reportError($error,TRUE,FALSE);
+		$ro = new RouteObject($nodes[0],$nodes[1],$searchType[0],$searchType[1]);
 	}
-} 
+}
+
 
 $artURL='';
 if (($ro != NULL) && (get_class($ro)==='RouteObject')) {
@@ -144,12 +106,6 @@ if (($ro!=NULL) && (get_class($ro)==='RouteObject')) {
 		HTMLOutput::printAddInfoForm('No path found between ' . $endPoints[0] . ' and ' . $endPoints[1] . '.');
 	} else {
 		HTMLOutput::printRoute($ro);
-		if (! $savedRoute) {
-			$rs = new RouteSaver();
-			$savedRoute = $rs->saveRouteSession($ro);
-		}
-		HTMLOutput::printSendRoute($savedRoute);
-		HTMLOutput::printRouteForm( $endPoints[0], $endPoints[1] , $error );
 	}
 }
 
