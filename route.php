@@ -98,7 +98,9 @@ if (($ro!=NULL) && (get_class($ro)==='RouteObject')) {
 
 echo '<div class="centered"><div class="left">';
 foreach ($sampleRoutes as $myRoute) {
-  HTMLOutput::printSampleRoute($myRoute['start'],$myRoute['end']);
+  ?>
+  <div class="sample">Try: <a href="route.php?musicianName=<?php echo htmlspecialchars(urlencode($myRoute['start'])) ?>&amp;musicianName2=<?php echo htmlspecialchars(urlencode($myRoute['end'])) ?>"><?php echo htmlspecialchars($myRoute['start']) ?>&nbsp;&rarr;&nbsp;<?php echo htmlspecialchars($myRoute['end']) ?></a></div>
+  <?php
 }
 ?>
           </div>    
