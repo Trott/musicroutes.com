@@ -166,4 +166,3 @@ function getTextDump(RouteElement $myRe) {
 	$returnValue .= ' ' . $myRe->getAlbum()->getToString();
 	return $returnValue;
 }
-?>
