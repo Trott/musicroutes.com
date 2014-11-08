@@ -68,19 +68,6 @@ if (empty($endPoints[0]) && ( empty($endPoints[1]) )) {
   }
 }
 
-
-$artURL='';
-if (($ro != NULL) && (get_class($ro)==='RouteObject')) {
-  if($ro->getCount() > 0) {
-    $ro->rewind();
-    $artURL = $ro->current()->getAlbum()->getArtURL();
-    if (empty($artURL)) {
-      $ro->last();
-      $artURL = $ro->current()->getAlbum()->getArtURL();
-    }
-  }
-}
-
 if (! empty($endPoints[0]) && (! empty($endPoints[1]) )) {
   $finalTitle = "connect ${endPoints[0]} to ${endPoints[1]}";
   $title[] = $finalTitle;
