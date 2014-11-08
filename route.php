@@ -115,12 +115,3 @@ foreach ($sampleRoutes as $myRoute) {
 }
 echo '</div></div>';
 HTMLOutput::printFooter(! empty($sampleRoutes));
-
-function getTextDump(RouteElement $myRe) {
-	$returnValue = $myRe->getTrack()->getToString();
-	foreach ($myRe->getArtist(TRUE) as $thisArtist) {
-		$returnValue .= ' ' . $thisArtist->getToString();
-	}
-	$returnValue .= ' ' . $myRe->getAlbum()->getToString();
-	return $returnValue;
-}
