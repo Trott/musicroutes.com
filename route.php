@@ -5,7 +5,6 @@ require_once( 'HTTPRequest.php' );
 require_once( 'DataInterface.php' );
 require_once( 'RouteObject.php' );
 require_once( 'RouteSaver.php' );
-require_once( 'sampleRoutes.php' );
 
 $hr = new HTTPRequest;
 $di = DataInterface::singleton();
@@ -16,7 +15,6 @@ $title = array('Find a Route');
 $navigation = array();
 
 $endPoints = array($hr->getValue('musicianName'), $hr->getValue('musicianName2'));
-$dataSubmitted = ! in_array(FALSE,$endPoints,TRUE);
 
 $savedRoute = $hr->getValue('route');
 
@@ -26,10 +24,16 @@ $findPath = false;
 $typeToReport = array('saved route', 'saved route');
 
 $finalTitle='';
-if ( $dataSubmitted ) {
+if ( empty($savedRoute) ) {
 	if (empty($endPoints[0]) && ( empty($endPoints[1]) )) {
 		$error = 'Enter a musician, band, album, or song!';
-		$sampleRoutes = getSampleRoute(3);
+		$allArtists = $di->getAll('artist',array('tostring'));
+		$randStartArtists = array_rand($allArtists,5);
+		$randEndArtists = array_rand($allArtists,5);
+		for ($i=0; $i<5; $i++)
+			$sampleRoutes[] = array('start'=>$allArtists[$randStartArtists[$i]]['tostring'], 
+				'end'=>$allArtists[$randEndArtists[$i]]['tostring']
+			);
 	} elseif (empty($endPoints[0]) xor empty($endPoints[1])) {
 		$startPoint = ! empty($endPoints[0]) ? $endPoints[0] : $endPoints[1];
 		$allArtists = $di->getAll('artist',array('tostring'));
@@ -72,7 +76,7 @@ if ( $dataSubmitted ) {
 			$ro = new RouteObject($nodes[0],$nodes[1],$searchType[0],$searchType[1]);
 		}
 	}
-} elseif (! empty($savedRoute)) {
+} else {
 	$rs = new RouteSaver;
 	$ro = $rs->retrieveRoute($savedRoute);
 	if ($ro) {
@@ -101,9 +105,7 @@ if ( $dataSubmitted ) {
 		$error="The route specified is not valid or has expired.  Please check the URL and try again.";
 		reportError($error,TRUE,FALSE);
 	}
-} else {
-	$sampleRoutes=getSampleRoute(3);
-}
+} 
 
 $artURL='';
 if (($ro != NULL) && (get_class($ro)==='RouteObject')) {
