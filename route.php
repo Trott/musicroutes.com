@@ -11,7 +11,6 @@ $ro = NULL;
 $sampleRoutes = array();
 
 $title = array('Find a Route');
-$navigation = array();
 
 $endPoints = array($hr->getValue('musicianName'), $hr->getValue('musicianName2'));
 
@@ -73,7 +72,7 @@ if (! empty($endPoints[0]) && (! empty($endPoints[1]) )) {
   $title[] = $finalTitle;
 }
 
-HTMLOutput::printHeader( $title, $navigation );
+HTMLOutput::printHeader( $title );
 HTMLOutput::printRouteForm( $endPoints[0], $endPoints[1] , $error );
 
 if ($findPath) {
