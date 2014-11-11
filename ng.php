@@ -13,13 +13,11 @@ $title = array('Find a Route');
 
 $endPoints = array($hr->getValue('musicianName'), $hr->getValue('musicianName2'));
 
-$error='';
 $findPath = false;
 
 $finalTitle='';
 
 if (empty($endPoints[0]) && ( empty($endPoints[1]) )) {
-  $error = 'Enter a musician, band, album, or song!';
   $allArtists = $di->getAll('artist',array('tostring'));
   $randStartArtists = array_rand($allArtists,5);
   $randEndArtists = array_rand($allArtists,5);
@@ -72,7 +70,7 @@ if (! empty($endPoints[0]) && (! empty($endPoints[1]) )) {
 }
 
 HTMLOutput::printHeader( $title );
-HTMLOutput::printRouteForm( $endPoints[0], $endPoints[1] , $error );
+HTMLOutput::printRouteForm( $endPoints[0], $endPoints[1] );
 
 if ($findPath) {
   $printAddForm = false;
