@@ -96,9 +96,12 @@ if (! empty($endPoints[0]) && (! empty($endPoints[1]) )) {
       <div class="meat">
         <div class="content">
           <h1>Find a Route</h1>
+          <form action="ng.php" class="compact">
+            Connect <input type="text" name="musicianName" id="firstTextBox" value="<?php echo htmlspecialchars($_GET['musicianName']); ?>" class="textfield" onfocus="this.className='textfield hasfocus';" onblur="this.className='textfield';" />
+            → <input type="text" name="musicianName2" value="<?php echo htmlspecialchars($_GET['musicianName2']); ?>" class="textfield" onfocus="this.className='textfield hasfocus';" onblur="this.className='textfield';" />
+            <input  type="submit" class="submit compact" value="Route" onclick="document.getElementById('pleaseWait1').style.display='block';" />
+          </form>
 <?php
-HTMLOutput::printRouteForm( $endPoints[0], $endPoints[1] );
-
 if ($findPath) {
   $printAddForm = false;
   if ( empty($nodes[0]) ) {
