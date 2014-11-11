@@ -1,5 +1,4 @@
 <?php
-require_once( 'errorHandling.php' );
 require_once( 'HTMLOutput.php' );
 require_once( 'HTTPRequest.php' );
 require_once( 'DataInterface.php' );
