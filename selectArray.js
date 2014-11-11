@@ -23,4 +23,4 @@ function swapOption(fromSelectId, toSelectId) {
 	moveOptions(toSelect, fromSelect);
 }
 
-var selectArray = new Array();
+var selectArray = [];
