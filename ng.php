@@ -9,8 +9,6 @@ $di = DataInterface::singleton();
 $ro = NULL;
 $sampleRoutes = array();
 
-$title = array('Find a Route');
-
 $endPoints = array($hr->getValue('musicianName'), $hr->getValue('musicianName2'));
 
 $findPath = false;
@@ -64,12 +62,41 @@ if (empty($endPoints[0]) && ( empty($endPoints[1]) )) {
   }
 }
 
+$title = '';
 if (! empty($endPoints[0]) && (! empty($endPoints[1]) )) {
-  $finalTitle = "connect ${endPoints[0]} to ${endPoints[1]}";
-  $title[] = $finalTitle;
+  $title = htmlspecialchars(" | connect ${endPoints[0]} to ${endPoints[1]}");
 }
-
-HTMLOutput::printHeader( $title );
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Music Routes<?php echo $title; ?></title>
+    <link rel="stylesheet" href="style.min.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">   
+  </head>
+  <body onload="if (foo=document.getElementById('firstTextBox')) foo.focus();">
+    <div class="pageContainer">
+      <div class="page">
+        <div class="header">
+          <div class="tagline">Connect one musician to another<br />
+            through the musicians they've played with
+          </div>
+          <a href="/" class="logoHome"><img src="images/webLogo.png" alt="Music Routes Logo" /></a>
+          <a href="/" class="nameHome"><img src="images/music_routes.png" alt="Music Routes" /></a>
+          <div class="navBar">
+          <ul>
+            <li><a href="ng.php">Find a Route</a></li>
+            <li><a href="search.php">Search</a></li>
+            <li><a href="add.php">Add Info</a></li>
+            <li><a href="http://blog.musicroutes.com/">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="meat">
+        <div class="content">
+          <h1>Find a Route</h1>
+<?php
 HTMLOutput::printRouteForm( $endPoints[0], $endPoints[1] );
 
 if ($findPath) {
@@ -95,7 +122,7 @@ if (($ro!=NULL) && (get_class($ro)==='RouteObject')) {
 echo '<div class="centered"><div class="left">';
 foreach ($sampleRoutes as $myRoute) {
   ?>
-  <div class="sample">Try: <a href="route.php?musicianName=<?php echo htmlspecialchars(urlencode($myRoute['start'])) ?>&amp;musicianName2=<?php echo htmlspecialchars(urlencode($myRoute['end'])) ?>"><?php echo htmlspecialchars($myRoute['start']) ?>&nbsp;&rarr;&nbsp;<?php echo htmlspecialchars($myRoute['end']) ?></a></div>
+  <div class="sample">Try: <a href="ng.php?musicianName=<?php echo htmlspecialchars(urlencode($myRoute['start'])) ?>&amp;musicianName2=<?php echo htmlspecialchars(urlencode($myRoute['end'])) ?>"><?php echo htmlspecialchars($myRoute['start']) ?>&nbsp;&rarr;&nbsp;<?php echo htmlspecialchars($myRoute['end']) ?></a></div>
   <?php
 }
 ?>
