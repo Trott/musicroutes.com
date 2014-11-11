@@ -13,8 +13,6 @@ $endPoints = array($hr->getValue('musicianName'), $hr->getValue('musicianName2')
 
 $findPath = false;
 
-$finalTitle='';
-
 if (empty($endPoints[0]) && ( empty($endPoints[1]) )) {
   $allArtists = $di->getAll('artist',array('tostring'));
   $randStartArtists = array_rand($allArtists,5);
