@@ -62,15 +62,15 @@ if (empty($endPoints[0]) && ( empty($endPoints[1]) )) {
   }
 }
 
-$title = '';
+$title = 'Music Routes';
 if (! empty($endPoints[0]) && (! empty($endPoints[1]) )) {
-  $title = htmlspecialchars(" | connect ${endPoints[0]} to ${endPoints[1]}");
+  $title .= htmlspecialchars(" | connect ${endPoints[0]} to ${endPoints[1]}");
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Music Routes<?php echo $title; ?></title>
+    <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="style.min.css" type="text/css" />
     <meta charset="utf-8" />
     <meta name=viewport content="width=device-width, initial-scale=1">   
