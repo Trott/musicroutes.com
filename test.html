@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+<body>
+  <ol id="results">
+  </ol>
+<script>
+  var service_url = 'https://www.googleapis.com/freebase/v1/search';
+  var params = {
+    'filter': '(all type:/music/artist)',
+    'limit': 35,
+    'output': '(/music/artist/track /music/track_contribution/track)'
+  };
+  $.getJSON(service_url + '?callback=?', params, function(response) {
+    if (response.error) {
+      $('<div>', {text:response.error.message}).appendTo(document.body);
+    }
+    if (response.result instanceof Array) {
+      $.each(response.result, function(i, result) {
+        var li = $('<li>', {text:result['name']});
+        li.appendTo($('#results'));
+      });
+    }
+    console.log(response);
+  });
+</script>
+</body>
+</html>
