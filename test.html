@@ -7,11 +7,26 @@
   <ol id="results">
   </ol>
 <script>
+  function getContributedTo(data) {
+    var ol;
+
+    if (data['/music/track_contribution/track'] instanceof Array) {
+      ol = $('<ol>');
+      $.each(data['/music/track_contribution/track'], function (i, result) {
+        var li = $('<li>', {text:result.name});
+        li.appendTo(ol);
+      });
+    }
+
+    return ol;
+  }
+
+
   var service_url = 'https://www.googleapis.com/freebase/v1/search';
   var params = {
     'filter': '(all type:/music/artist)',
-    'limit': 35,
-    'output': '(/music/artist/track /music/track_contribution/track)'
+    'limit': 222,
+    'output': '(/music/track_contribution/track)'
   };
   $.getJSON(service_url + '?callback=?', params, function(response) {
     if (response.error) {
@@ -20,10 +35,16 @@
     if (response.result instanceof Array) {
       $.each(response.result, function(i, result) {
         var li = $('<li>', {text:result['name']});
-        li.appendTo($('#results'));
+
+        if (result.output) {
+          var contributedTo = getContributedTo(result.output['/music/track_contribution/track']);
+          if (contributedTo) {
+            contributedTo.appendTo(li);
+            li.appendTo($('#results'));
+          }
+        }
       });
     }
-    console.log(response);
   });
 </script>
 </body>
