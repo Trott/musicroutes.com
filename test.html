@@ -13,8 +13,14 @@
     if (data['/music/track_contribution/track'] instanceof Array) {
       ol = $('<ol>');
       $.each(data['/music/track_contribution/track'], function (i, result) {
-        var li = $('<li>', {text:result.name});
-        li.appendTo(ol);
+        if (result.mid) {
+          var name = result.name || 'Untitled';
+          // TODO: sanitize mid
+          var a = $('<a>', {href: 'http://freebase.com' + result.mid, text: name});
+          var li = $('<li>');
+          a.appendTo(li);
+          li.appendTo(ol);
+        }
       });
     }
 
