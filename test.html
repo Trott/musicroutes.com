@@ -7,7 +7,8 @@
   <ol id="results">
   </ol>
 <script>
-  function getContributedTo(data) {
+(function () {
+  var getContributedTo = function (data) {
     var ol;
 
     if (data['/music/track_contribution/track'] instanceof Array) {
@@ -52,6 +53,7 @@
       });
     }
   });
+}());
 </script>
 </body>
 </html>
