@@ -65,7 +65,7 @@
           var contributedTo = getContributedTo(result.output['/music/track_contribution/track']);
           if (contributedTo) {
             contributedTo.appendTo(li);
-            li.on('click', function () {
+            span.on('click', function () {
               contributedTo.toggle();
               span.toggleClass('collapsed');
             });
