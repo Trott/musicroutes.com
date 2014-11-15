@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Music Routes Test w/ Freebase API</title>
+
+    <style>
+      .collapsible::before {
+        content: '-';
+        color: #777;
+        font-family: monospace;
+      }
+      .collapsible.collapsed::before {
+        content: '+';
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
+  <progress>Loading...</progress>
   <ol id="results">
   </ol>
 <script>
@@ -13,6 +27,7 @@
 
     if (data['/music/track_contribution/track'] instanceof Array) {
       ol = $('<ol>');
+      ol.hide();
       $.each(data['/music/track_contribution/track'], function (i, result) {
         // Per http://wiki.freebase.com/wiki/Machine_ID, mids may contain digits, lowercase consonants, underscore.
         // We allow vowels too for code readability.
@@ -31,7 +46,6 @@
     return ol;
   }
 
-
   var service_url = 'https://www.googleapis.com/freebase/v1/search';
   var params = {
     'filter': '(all type:/music/artist)',
@@ -44,16 +58,22 @@
     }
     if (response.result instanceof Array) {
       $.each(response.result, function(i, result) {
-        var li = $('<li>', {text:result['name']});
+        var span = $('<span>', {text: result.name}).addClass('collapsible collapsed');
+        var li = $('<li>').append(span);
 
         if (result.output) {
           var contributedTo = getContributedTo(result.output['/music/track_contribution/track']);
           if (contributedTo) {
             contributedTo.appendTo(li);
+            li.on('click', function () {
+              contributedTo.toggle();
+              span.toggleClass('collapsed');
+            });
             li.appendTo($('#results'));
           }
         }
       });
+      $('progress').hide();
     }
   });
 }());
