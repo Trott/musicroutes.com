@@ -14,14 +14,13 @@
     if (data['/music/track_contribution/track'] instanceof Array) {
       ol = $('<ol>');
       $.each(data['/music/track_contribution/track'], function (i, result) {
-        if (result.mid) {
+        // Per http://wiki.freebase.com/wiki/Machine_ID, mids may contain digits, lowercase consonants, underscore.
+        // We allow vowels too for code readability.
+        // Must have '/m/' as prefix.
+        if (/^\/m\/[0-9a-z_]+$/.test(result.mid)) {
           var name = result.name || 'Untitled';
-          // Per http://wiki.freebase.com/wiki/Machine_ID, mids may contain digits, lowercase consonants, underscore.
-          // We add '/' because it comes prefixed with '/m/'.
-          // We allow vowels because it's more readable and we don't have to figure out if 'y' is allowed or not.
-          var mid = result.mid.replace(/[^0-9a-z_\/]/g, ''); 
 
-          var a = $('<a>', {href: 'http://freebase.com' + mid, text: name});
+          var a = $('<a>', {href: 'http://freebase.com' + result.mid, text: name});
           var li = $('<li>');
           a.appendTo(li);
           li.appendTo(ol);
