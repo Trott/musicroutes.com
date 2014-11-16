@@ -25,16 +25,18 @@
   var getContributedTo = function (data) {
     var ol;
 
-    if (data['/music/track_contribution/track'] instanceof Array) {
+    if (data instanceof Array) {
       ol = $('<ol>');
       ol.hide();
-      $.each(data['/music/track_contribution/track'], function (i, result) {
+      $.each(data, function (i, result) {
         // Per http://wiki.freebase.com/wiki/Machine_ID, mids may contain digits, lowercase consonants, underscore.
         // We allow vowels too for code readability.
         // Must have '/m/' as prefix.
         if (/^\/m\/[0-9a-z_]+$/.test(result.mid)) {
           var name = result.name || 'Untitled';
 
+          // TODO: list out contributors (already in the data) in addition to just the name of the track
+          // TODO: link to contributors freebase pages too, I suppose
           var a = $('<a>', {href: 'http://freebase.com' + result.mid, text: name});
           var li = $('<li>');
           a.appendTo(li);
@@ -46,23 +48,39 @@
     return ol;
   }
 
-  var service_url = 'https://www.googleapis.com/freebase/v1/search';
+  var service_url = 'https://www.googleapis.com/freebase/v1/mqlread/';
+
+  query = JSON.stringify([{
+    "mid": null,
+    "name": null,
+    "type": "/music/artist",
+    "track": [{
+      "mid": null,
+      "name": null,
+      "contributions": [{
+        "mid": null,
+        "contributor": null,
+        "role": []
+      }]
+    }]
+  }]);
   var params = {
-    'filter': '(all type:/music/artist)',
-    'limit': 222,
-    'output': '(/music/track_contribution/track)'
+    'html_escape': false,
+    'query': query
   };
   $.getJSON(service_url + '?callback=?', params, function(response) {
+    // TODO: Is this even how mqlread reports errors?
     if (response.error) {
       $('<div>', {text:response.error.message}).appendTo(document.body);
     }
     if (response.result instanceof Array) {
       $.each(response.result, function(i, result) {
-        var span = $('<span>', {text: result.name}).addClass('collapsible collapsed');
+        var name = result.name || 'Whoops! Looks like Freebase does not have the English name for this artist.';
+        var span = $('<span>', {text: name}).addClass('collapsible collapsed');
         var li = $('<li>').append(span);
 
-        if (result.output) {
-          var contributedTo = getContributedTo(result.output['/music/track_contribution/track']);
+        if (result.track) {
+          var contributedTo = getContributedTo(result.track);
           if (contributedTo) {
             contributedTo.appendTo(li);
             span.on('click', function () {
