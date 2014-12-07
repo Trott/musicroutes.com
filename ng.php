@@ -86,7 +86,6 @@ if (! empty($endPoints[0]) && (! empty($endPoints[1]) )) {
           <ul>
             <li><a href="ng.php">Find a Route</a></li>
             <li><a href="search.php">Search</a></li>
-            <li><a href="add.php">Add Info</a></li>
             <li><a href="http://blog.musicroutes.com/">Blog</a></li>
           </ul>
         </div>
